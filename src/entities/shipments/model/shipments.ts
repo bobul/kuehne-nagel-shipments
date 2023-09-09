@@ -1,23 +1,15 @@
 import {IShipments} from "../../../shared/models";
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {fetchShipments} from "../action/actionCreator.ts";
 
 interface ShipmentsState {
-    shipments: IShipments;
+    shipments: IShipments[];
     error: string;
     isLoading: boolean;
 }
 
-const initialShipmentsState: IShipments = {
-    orderNo: '',
-    date: '',
-    customer: '',
-    trackingNo: '',
-    status: '',
-    consignee: '',
-}
-
 const initialState: ShipmentsState = {
-    shipments: initialShipmentsState,
+    shipments: [],
     error: '',
     isLoading: false,
 }
@@ -26,7 +18,20 @@ export const shipmentsSlice = createSlice({
     name: 'shipments',
     initialState,
     reducers: {},
-    extraReducers: {}
+    extraReducers: {
+        [fetchShipments.pending.type]: (state) => {
+            state.isLoading = true;
+        },
+        [fetchShipments.fulfilled.type]: (state, action: PayloadAction<IShipments[]>) => {
+            state.isLoading = false;
+            state.error = '';
+            state.shipments = action.payload;
+        },
+        [fetchShipments.rejected.type]: (state, action: PayloadAction<string>) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        }
+    }
 })
 
 export default shipmentsSlice.reducer;
