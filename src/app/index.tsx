@@ -1,11 +1,11 @@
 import './index.css'
+import {MainPage} from "../pages/main";
+import {withStore} from "./providers";
 function App() {
 
   return (
-      <div>
-        Hello, world!
-      </div>
+      <MainPage/>
   )
 }
 
-export default App
+export default withStore(App);
