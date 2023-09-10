@@ -11,4 +11,4 @@ export const fetchShipments = createAsyncThunk(
             throw thunkAPI.rejectWithValue(e.message)
         }
     }
-)
+);

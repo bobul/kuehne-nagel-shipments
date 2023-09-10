@@ -1,10 +1,13 @@
 import './index.css'
 import {MainPage} from "../pages/main";
 import {withStore} from "./providers";
+import {Theme} from "@radix-ui/themes";
 function App() {
 
   return (
-      <MainPage/>
+      <Theme>
+        <MainPage/>
+      </Theme>
   )
 }
 

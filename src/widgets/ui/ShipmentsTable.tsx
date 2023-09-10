@@ -1,7 +1,8 @@
 import {useAppDispatch, useAppSelector} from "../../shared/hooks";
 import {useEffect} from "react";
 import {fetchShipments} from "../../entities/shipments/action";
-import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+import {Table} from "@radix-ui/themes";
+import {ShipmentItem} from "../../shared/ui";
 
 export const ShipmentsTable = () => {
     const dispatch = useAppDispatch();
@@ -21,31 +22,23 @@ export const ShipmentsTable = () => {
     }
 
     return (
-        <TableContainer component={Paper}>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Order No</TableCell>
-                        <TableCell>Date</TableCell>
-                        <TableCell>Customer</TableCell>
-                        <TableCell>Tracking No</TableCell>
-                        <TableCell>Status</TableCell>
-                        <TableCell>Consignee</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {shipments.map((shipment) => (
-                        <TableRow key={shipment.orderNo}>
-                            <TableCell>{shipment.orderNo}</TableCell>
-                            <TableCell>{shipment.date}</TableCell>
-                            <TableCell>{shipment.customer}</TableCell>
-                            <TableCell>{shipment.trackingNo}</TableCell>
-                            <TableCell>{shipment.status}</TableCell>
-                            <TableCell>{shipment.consignee}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <Table.Root variant="surface">
+            <Table.Header>
+                <Table.Row>
+                    <Table.ColumnHeaderCell>ORDERNO</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell>DELIVERYDATE</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell>CUSTOMER</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell>TRACKINGNO</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell>STATUS</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell>CONSIGNEE</Table.ColumnHeaderCell>
+                    <Table.ColumnHeaderCell></Table.ColumnHeaderCell>
+                </Table.Row>
+            </Table.Header>
+            <Table.Body>
+                {shipments.map((shipment) => (
+                    <ShipmentItem key={shipment.orderNo} shipment={shipment}/>
+                ))}
+            </Table.Body>
+        </Table.Root>
     );
 };

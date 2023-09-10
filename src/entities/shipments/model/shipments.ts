@@ -17,7 +17,21 @@ const initialState: ShipmentsState = {
 export const shipmentsSlice = createSlice({
     name: 'shipments',
     initialState,
-    reducers: {},
+    reducers: {
+        deleteShipment: (state, action: PayloadAction<string>) => {
+            state.shipments = state.shipments.filter((shipment) => {
+                return shipment.orderNo !== action.payload;
+            })
+        },
+        updateShipment: (state, action: PayloadAction<IShipments>) => {
+            state.shipments = state.shipments.map((shipment) => {
+                if (shipment.orderNo === action.payload.orderNo) {
+                    return {...shipment, ...action.payload}
+                }
+                return shipment;
+            })
+        }
+    },
     extraReducers: {
         [fetchShipments.pending.type]: (state) => {
             state.isLoading = true;
@@ -35,3 +49,4 @@ export const shipmentsSlice = createSlice({
 })
 
 export default shipmentsSlice.reducer;
+export const {deleteShipment, updateShipment} = shipmentsSlice.actions;
