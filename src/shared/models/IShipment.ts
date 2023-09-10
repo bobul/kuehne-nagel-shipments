@@ -1,4 +1,4 @@
-export interface IShipments {
+export interface IShipment {
     orderNo: string;
     date: string;
     customer: string;

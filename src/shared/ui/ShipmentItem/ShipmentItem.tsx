@@ -1,24 +1,24 @@
 import {Button, Dialog, Flex, Table, Text, TextField, Box} from "@radix-ui/themes";
-import {IShipments} from "../../models";
+import {IShipment} from "../../models";
 import {useState} from "react";
 import {deleteShipment, updateShipment} from "../../../entities/shipments/model";
 import {useAppDispatch} from "../../hooks";
 import {Cross1Icon, IdCardIcon} from "@radix-ui/react-icons";
 
 interface ShipmentItemProps {
-    shipment: IShipments;
+    shipment: IShipment;
 }
 
 export const ShipmentItem: React.FC<ShipmentItemProps> = ({shipment}) => {
     const dispatch = useAppDispatch();
 
-    const [selectedShipment, setSelectedShipment] = useState<IShipments>({...shipment});
+    const [selectedShipment, setSelectedShipment] = useState<IShipment>({...shipment});
 
     const handleDelete = (orderNo: string): void => {
         dispatch(deleteShipment(orderNo));
     }
 
-    const handleUpdate = (updatedShipment: IShipments): void => {
+    const handleUpdate = (updatedShipment: IShipment): void => {
         console.log(updatedShipment)
         dispatch(updateShipment(updatedShipment));
     }

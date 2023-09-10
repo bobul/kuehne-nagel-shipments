@@ -1,1 +1,1 @@
-export * from './IShipments'
+export * from './IShipment.ts'

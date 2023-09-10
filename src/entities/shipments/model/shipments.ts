@@ -1,9 +1,9 @@
-import {IShipments} from "../../../shared/models";
+import {IShipment} from "../../../shared/models";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {fetchShipments} from "../action/actionCreator.ts";
 
 interface ShipmentsState {
-    shipments: IShipments[];
+    shipments: IShipment[];
     error: string;
     isLoading: boolean;
 }
@@ -23,7 +23,7 @@ export const shipmentsSlice = createSlice({
                 return shipment.orderNo !== action.payload;
             })
         },
-        updateShipment: (state, action: PayloadAction<IShipments>) => {
+        updateShipment: (state, action: PayloadAction<IShipment>) => {
             state.shipments = state.shipments.map((shipment) => {
                 if (shipment.orderNo === action.payload.orderNo) {
                     return {...shipment, ...action.payload}
@@ -36,7 +36,7 @@ export const shipmentsSlice = createSlice({
         [fetchShipments.pending.type]: (state) => {
             state.isLoading = true;
         },
-        [fetchShipments.fulfilled.type]: (state, action: PayloadAction<IShipments[]>) => {
+        [fetchShipments.fulfilled.type]: (state, action: PayloadAction<IShipment[]>) => {
             state.isLoading = false;
             state.error = '';
             state.shipments = action.payload;

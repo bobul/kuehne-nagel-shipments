@@ -2,7 +2,8 @@ import {useAppDispatch, useAppSelector} from "../../shared/hooks";
 import {useEffect} from "react";
 import {fetchShipments} from "../../entities/shipments/action";
 import {Table} from "@radix-ui/themes";
-import {ShipmentItem} from "../../shared/ui";
+import {Error, Loader, ShipmentItem} from "../../shared/ui";
+import styles from "./ShipmentsTable.module.css"
 
 export const ShipmentsTable = () => {
     const dispatch = useAppDispatch();
@@ -14,11 +15,11 @@ export const ShipmentsTable = () => {
     }, [dispatch])
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loader className={styles.loader}/>;
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <Error message={error} className={styles.error}/>;
     }
 
     return (
