@@ -13,6 +13,7 @@ A web application to manage shipments data. This project is built using React, T
 - Implement a delete button for each shipment.
 - Visualize shipment details in a context menu.
 - Edit and update shipment details in the context menu (if applicable).
+- [Feature-sliced design](https://feature-sliced.design/docs) implemented, avoid default structure ✅
 
 ## Tech Stack
 
