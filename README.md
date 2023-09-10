@@ -8,11 +8,11 @@ A web application to manage shipments data. This project is built using React, T
 
 ## Features
 
-- Load shipments data from an API (created own server in `Golang` that returns data from json if provided link will be overloaded).
-- Display shipments data in a table.
-- Implement a delete button for each shipment.
-- Visualize shipment details in a context menu.
-- Edit and update shipment details in the context menu (if applicable).
+- Load shipments data from an API (created own server in `Golang` that returns data from json if provided link will be overloaded). 💯
+- Display shipments data in a table. 💯 
+- Implement a delete button for each shipment.💯
+- Visualize shipment details in a context menu. ✅
+- Edit and update shipment details in the context menu (if applicable). ✅
 - [Feature-sliced design](https://feature-sliced.design/docs) implemented, avoid default structure ✅
 
 ## Tech Stack
@@ -22,7 +22,7 @@ A web application to manage shipments data. This project is built using React, T
 - Redux Toolkit
 - Redux Thunk Middleware
 - Axios
-- Radix UI
+- [Radix UI](https://www.radix-ui.com/)
 - React Spinner
 
 ## Getting Started
@@ -31,7 +31,7 @@ To get started with this project, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/bobul/kuehne-nagel-shipments.git`
 2. Install dependencies: `npm install`
-3. Start the development server: `npm start`
+3. Start the development server: `npm run dev`
 
 ## Usage
 
