@@ -8,7 +8,7 @@ import styles from "./ShipmentsTable.module.css"
 export const ShipmentsTable = () => {
     const dispatch = useAppDispatch();
     const {shipments, error, isLoading} = useAppSelector(state => state.shipmentsReducer);
-
+    const tableHeaders = ["ORDERNO", "DELIVERYDATE", "CUSTOMER", "TRACKINGNO", "STATUS", "CONSIGNEE"];
 
     useEffect(() => {
         dispatch(fetchShipments());
@@ -26,12 +26,9 @@ export const ShipmentsTable = () => {
         <Table.Root variant="surface">
             <Table.Header>
                 <Table.Row>
-                    <Table.ColumnHeaderCell>ORDERNO</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>DELIVERYDATE</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>CUSTOMER</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>TRACKINGNO</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>STATUS</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>CONSIGNEE</Table.ColumnHeaderCell>
+                    {tableHeaders.map((header) => (
+                        <Table.ColumnHeaderCell key={header}>{header}</Table.ColumnHeaderCell>
+                    ))}
                     <Table.ColumnHeaderCell></Table.ColumnHeaderCell>
                 </Table.Row>
             </Table.Header>
